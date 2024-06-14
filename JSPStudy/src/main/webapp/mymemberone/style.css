@@ -1,0 +1,29 @@
+@charset "UTF-8";
+BODY{
+	FONT-SIZE:9pt; COLOR:black; LINE-HEIGHT: 160%;
+}
+TD{
+	FONT-SIZE:9pt; COLOR: black; LINE-HEIGHT:160%;
+}
+SELECT{
+	FONT-SIZE:9pt; COLOR:black;LINE-HEIGHT:160%;
+}
+DIV{
+	FONT-SIZE:9pt; COLOR:black; LINE-HEIGHT:160%;
+}
+FORM{
+	FONT-SIZE:9pt; COLOR:black; LINE-HEIGHT:160%;
+}
+TEXTREA{
+	BORDER-RIGHT:1px soid #999999;BORDER-TOP:1px solid #999999;
+	FONT-SIZE: 9pt; BORDER-LEFT: 1PX solid #999999; COLOR: BLACK;
+	BORDER-BOTTOM:1px solid #999999; BACKGROUND-COLOR:white
+}
+INPUT{
+	BORDER-RIGHT:1px solid #999999; BORDER-TOP: 1px solid #999999;
+	FONT-SIZE: 9pt; BORDER-LEFT: 1px solid #999999; 
+	BACKGROUND-COLOR:white
+}
+A:lick {text-decoration:none; color:#696969}
+A:hover{text-decoration:yes; color:#66CCFF}
+A:visited{text-decoration:nonecolor=#330066}

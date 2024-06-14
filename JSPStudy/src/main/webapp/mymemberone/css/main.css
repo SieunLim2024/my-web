@@ -1,0 +1,223 @@
+@charset "UTF-8";
+body{
+  margin: 0;
+    /* width: 1200px;
+    margin: 0 auto; */
+}
+header,nav{
+  background-color: rgba(0, 0, 0, 0.89);
+}
+header a,nav a{
+  color: white;
+}
+
+header,footer,nav{
+  padding: 0 50px;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+ul{
+  list-style-type: none;
+  align-content: flex-start;
+  margin: 10px;
+  padding: 0px;
+}
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  font-weight: 800;
+
+}
+header>div>img{
+  height: 35px;
+  margin: 20px 10px 10px 0;
+
+}
+nav{
+  display: flex;
+  justify-content: space-between;
+  font-weight: 800;
+  align-items: flex-start;
+    
+}
+
+nav>div.ul{
+  position: relative;
+}
+nav>div{
+
+  height: 50px;
+}
+/* a.drop{
+    padding-top: 30px;
+} */
+div.drop{
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+    
+}
+div.drop>a{
+  margin-top: 5px;
+  margin-bottom: 15px;
+    
+}
+li:hover div.drop{
+  opacity: 1;
+  visibility: visible;
+  background-color: rgba(255, 255, 255, 0.732);
+  width: 130px;
+  padding-left: 15px;
+  padding-top: 15px;
+  z-index: 2;
+  margin-top: 10px;
+}
+/* div.drop:hover{
+  opacity: 1;
+  visibility: visible;
+  background-color: rgba(255, 255, 255, 0.732);
+  width: 130px;
+  padding-left: 15px;
+  padding-top: 15px;
+  z-index: 2;
+  margin-top: 10px;
+} */
+li:hover div.drop>a{
+  color: #213555;
+}
+nav>div.left>ul{
+  margin: 0;
+  height: 100%;
+  /* display: flex;
+  flex-direction: row; */
+}
+
+nav>div.left>ul>li>a{
+  margin-top: 10px;
+  display: block;
+}
+nav>div.left>ul>li:hover>a{
+  color:#4F709C;
+}
+a:hover div.drop{
+  display: inline-block;
+  z-index: 2;
+}
+nav>div>ul>li{
+  display: inline-block;
+}
+nav>div.left>ul>li{
+  display: inline-block;
+  width: 150px;
+  height: 100%;
+}
+nav>div.right>ul{
+  margin-right: 0;
+}
+nav>div.right>ul>li>a{
+  font-size: 15px;
+  border: 2px solid white;
+  border-radius: 10px;
+  color: white;
+  padding: 5px;
+  margin: 0 0 0 5px;
+}
+nav>div.right>ul>li>a:hover{
+  color: #4F709C;
+  border: 2px solid#4F709C;
+}
+section{
+  width: 100%;
+  height: 700px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin: 0;
+  padding: 0;
+}
+
+/* slide show */
+div.slideshow{
+  height: 100%;
+  min-width: 700px;
+  position: relative;
+  background-color: black;
+}
+div.slideshow_slides{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+div.slideshow_slides a{
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+div.slideshow_slides a>img{
+  height: 100%;
+}
+/* 네비게이션 바를 중앙에 배치 */
+div.slideshow_nav a{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 40px;
+  color: white;
+  transform: translateX(-50%);
+  transform: translateY(-50%);
+  opacity: 0.3;
+}
+div.slideshow_nav a:hover{
+  opacity: 1;
+}
+div.slideshow_nav a.prev{
+  margin-left: -540px;
+} 
+div.slideshow_nav a.next{
+  margin-left: 500px;
+} 
+
+div.indicator{
+  position: absolute;
+  right: 0;
+  left: 0;
+  text-align: center;
+  bottom: 20px;
+  
+}
+div.indicator a{
+  color: rgb(122, 122, 122);
+  display: inline-block;
+  font-size: 15px;
+  padding: 5px;
+  opacity: 0.4;
+}
+div.indicator a.active{
+  color: rgb(255, 255, 255);
+  opacity: 1;
+}
+
+
+footer{
+  margin-bottom: 20px;
+}
+footer>div.footer1{
+  margin: 15px 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid black;
+  font-weight: 800;
+  font-size: 16px;
+}
+footer>div.footer2>p{
+  margin: 5px 0 0 0;
+  font-size: 15px;
+}
