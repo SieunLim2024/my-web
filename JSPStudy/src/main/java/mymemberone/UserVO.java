@@ -10,6 +10,10 @@ public class UserVO {
 	private String adress2;
 	private String adress3;
 	private String phoneNum;
+	private int mileage;
+	private int amount;
+	private String grade;
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -63,6 +67,24 @@ public class UserVO {
 	}
 	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
+	}
+	public int getMileage() {
+		return mileage;
+	}
+	public void setMileage(int mileage) {
+		this.mileage = mileage;
+	}
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 	
 	

@@ -58,7 +58,9 @@ String loginID = (String) session.getAttribute("loginID");
 			<td colspan="3" align="center">관리자님 환영합니다.</td>
 		</tr>
 		<tr>
-			<td align="center" width="100"><a href="deleteFormAdmin.jsp">회원관리</a></td>
+			<td align="center" width="100"><a href="./admin/deleteFormAdmin.jsp">회원관리</a></td>
+			<td align="center" width="100"><a href="./admin/deleteFormAdmin.jsp">공연추가</a></td>
+			<td align="center" width="100"><a href="./admin/deleteFormAdmin.jsp">공연관리</a></td>
 			<td align="center" width="100"><a href="logout.jsp">로그아웃</a></td>
 
 		</tr>

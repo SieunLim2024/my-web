@@ -29,6 +29,9 @@ System.out.println("size="+list.size());
 			<th>상세주소</th>
 			<th>참고사항</th>
 			<th>휴대폰번호</th>
+			<th>회원등급</th>
+			<th>누적구매</th>
+			<th>마일리지</th>
 			<th>선택</th>
 		</tr>
 		<% for(int i=0;i<list.size();i++){ %>
@@ -42,6 +45,9 @@ System.out.println("size="+list.size());
 					<td><%= list.get(i).getAdress2() %></td>
 					<td><%= list.get(i).getAdress3() %></td>
 					<td><%= list.get(i).getPhoneNum() %></td>
+					<td><%= list.get(i).getGrade() %></td>
+					<td><%= list.get(i).getAmount() %></td>
+					<td><%= list.get(i).getMileage() %></td>
 					<td><input type="checkbox" name="delete" value="<%= list.get(i).getUserId()%>"></td>
 					</tr>
 		<% }%>

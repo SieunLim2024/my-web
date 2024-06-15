@@ -5,7 +5,7 @@
 
 <head>
 <title>Update Form</title>
-<link href="member.css" rel="stylesheet" type="text/css" />
+<link href="member.css?ver=3" rel="stylesheet" type="text/css" />
 <script language="javascript" src="script.js"></script>
 <script>
     function userIdChek(){
@@ -198,12 +198,10 @@ UserVO vo = dao.getMember(loginID);
 	<h1>회원 수정 정보 입력</h1>
 	<form action="modifyProc.jsp" method="post" name="regForm">
 		<table>
-
 			<tr>
 				<th>사용자 ID</th>
 				
 				<td><%=vo.getUserId()%></td>
-				
 			</tr>
 			<tr>
 				<th>비밀번호</th>
@@ -215,7 +213,6 @@ UserVO vo = dao.getMember(loginID);
 
 					</div>
 				</td>
-
 			</tr>
 			<tr>
 				<th>비밀번호 확인</th>
@@ -233,7 +230,6 @@ UserVO vo = dao.getMember(loginID);
 					<div>
 						<%=vo.getUserName()%>
 					</div>
-
 				</td>
 			</tr>
 			<tr>
@@ -244,7 +240,6 @@ UserVO vo = dao.getMember(loginID);
 							value="<%=vo.getEmail()%>"> <span id="emailInfo"
 							style="color: red;"></span>
 					</div>
-
 				</td>
 			</tr>
 			<tr>
@@ -287,13 +282,25 @@ UserVO vo = dao.getMember(loginID);
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center">
-				<button  type="button" onclick="allCheck(event)">정보수정</button>
-					&nbsp;&nbsp; <input
-					type="button" value="취소"
-					onClick="javascript:window.location='login.jsp'" /></td>
+				<th>고객 등급</th>
+				<td><%=vo.getGrade()%></td>
+				
+			</tr>
+			<tr>
+				<th>누적 구매액</th>
+				<td><%=vo.getAmount()%></td>
+				
+			</tr>
+			<tr>
+				<th>마일리지</th>
+				<td><%=vo.getMileage()%></td>
 			</tr>
 		</table>
+		<div class="sub">
+			<button  type="button" onclick="allCheck(event)">정보수정</button>
+					&nbsp;&nbsp; 
+			<input type="button" value="취소" onClick="javascript:window.location='login.jsp'"></input>
+		</div>
 		</form>
 </body>
 </html>

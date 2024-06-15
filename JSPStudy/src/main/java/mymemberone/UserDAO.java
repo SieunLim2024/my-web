@@ -114,6 +114,9 @@ public class UserDAO {
 				vo.setAdress2(rs.getString("adress2"));
 				vo.setAdress3(rs.getString("adress3"));
 				vo.setPhoneNum(rs.getString("phonenum"));
+				vo.setMileage(rs.getInt("mileage"));
+				vo.setGrade(rs.getString("grade"));
+				vo.setAmount(rs.getInt("amount"));
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -234,11 +237,11 @@ public class UserDAO {
 		UserVO vo = null;
 		try {
 			conn = DBPoolUtil2.makeConnection();
-			pstmt = conn.prepareStatement("select * from usertbl where userid!='admin'");
+			pstmt = conn.prepareStatement("select * from usertbl where grade!='ADMIN'");
 			rs = pstmt.executeQuery();
 			while (rs.next()) {// 해당 아이디에 대한 회원이 존재
 				vo = new UserVO();
-				vo.setUserId(rs.getString("userid"));// 대소문자 상관 없나?
+				vo.setUserId(rs.getString("userid"));
 				vo.setUserPw(rs.getString("userpw"));
 				vo.setUserName(rs.getString("username"));
 				vo.setEmail(rs.getString("email"));
