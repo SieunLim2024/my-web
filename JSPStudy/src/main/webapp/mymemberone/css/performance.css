@@ -1,82 +1,83 @@
 @charset "UTF-8";
 
 h1 {
-	text-align: center;
+    text-align: center;
 }
 
 div.sub {
-	margin: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 div.info {
-	width: 50%;
-	margin: 0 auto;
+    width: 50%;
+    margin: 0 auto;
 }
 
 div>span {
-	padding-left: 10px;
+    padding-left: 10px;
 }
 
 table {
-	width: 50%;
-	margin: 20px auto;
-	border-collapse: collapse;
-	border-top: 1px solid black;
+    width: 50%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border-top: 1px solid black;
 }
 
 td, th {
-	border-bottom: 1px solid black;
-	border-collapse: collapse;
-	padding-left: 5px;
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+    padding-left: 5px;
 }
 
 tr:last-child>td, tr:last-child>th {
-	border-bottom: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 th {
-	width: 20%;
-	text-align: left;
-	padding: 0 6px 0 12px;
-	background-color: rgb(243, 243, 243);
-	color: rgb(80, 80, 80);
+    width: 20%;
+    text-align: left;
+    padding: 0 6px 0 12px;
+    background-color: rgb(243, 243, 243);
+    color: rgb(80, 80, 80);
 }
 
 div.submit {
-	width: 70%;
-	margin: 0 0 0 50%;
+    width: 70%;
+    margin: 0 0 0 50%;
 }
 
 td {
-	display: flex;
-	flex-direction: row;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
 }
 
 tr.adress>td {
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 tr.adress>td>div>input {
-	width: 70%;
+    width: 70%;
 }
 
 table span {
-	padding: 0 10px 0 0;
+    padding: 0 10px 0 0;
 }
 
 td>div {
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 table button {
-	height: 80%;
+    height: 80%;
 }
 
 div:not(.info)>span {
-	font-size: 13px;
+    font-size: 13px;
 }

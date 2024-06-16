@@ -11,10 +11,23 @@ import java.util.List;
 import jdbc.DBPoolUtil2;
 
 public class PerformanceDAO {
-	
-	public static List<PerformanceVO> getArticles() {
-		List<PerformanceVO> performanceList=null;
-		String sql = "CALL PERFORMANCETBL_SELECT(?)";
+	private static PerformanceDAO instance = null;
+
+	private PerformanceDAO() {
+	}
+
+	public static PerformanceDAO getInstance() {
+		if (instance == null) {
+			synchronized (PerformanceDAO.class) {// 동기화처리
+				instance = new PerformanceDAO();
+			}
+		}
+		return instance;
+	}
+
+	public List<PerformanceVO> getArticles(String genre) {
+		List<PerformanceVO> performanceList = null;
+		String sql = "CALL PERFORMANCETBL_SELECT(?,?)";
 		Connection con = null;
 		CallableStatement cstmt = null;
 		ResultSet rs = null;
@@ -22,9 +35,10 @@ public class PerformanceDAO {
 			performanceList = new ArrayList<PerformanceVO>();
 			con = DBPoolUtil2.makeConnection();
 			cstmt = con.prepareCall(sql);
-			cstmt.registerOutParameter(1, Types.REF_CURSOR);
+			cstmt.setString(1,genre);
+			cstmt.registerOutParameter(2, Types.REF_CURSOR);
 			cstmt.execute();
-			rs=(ResultSet)cstmt.getObject(1);
+			rs = (ResultSet) cstmt.getObject(2);
 			while (rs.next()) {
 				PerformanceVO p = new PerformanceVO();
 				p.setPerformanceId(rs.getString("performanceid"));
@@ -39,7 +53,6 @@ public class PerformanceDAO {
 				p.setYseats(rs.getInt("yseats"));
 				p.setXseats(rs.getInt("xseats"));
 
-
 				performanceList.add(p);
 			}
 		} catch (SQLException e) {
@@ -49,5 +62,56 @@ public class PerformanceDAO {
 		}
 		return performanceList;
 	}
-	
+
+	public int insertArticle(PerformanceVO vo) {
+		String sql = "CALL performancetbl_insert(?,?,?,?,?,?,?,?,?,?)";
+		Connection con = null;
+		CallableStatement cstmt = null;
+		int value=-1;
+		try {
+			con = DBPoolUtil2.makeConnection();
+			cstmt = con.prepareCall(sql);
+			cstmt.setString(1, vo.getPerformanceId());
+			cstmt.setString(2, vo.getPerformanceName());
+			cstmt.setString(3, vo.getGenre());
+			cstmt.setString(4, vo.getDayOfPerformance());
+			cstmt.setString(5, vo.getVenue());
+			cstmt.setInt(6, vo.getLimitAge());
+			cstmt.setInt(7, vo.getTotalSeats());
+			cstmt.setInt(8, vo.getTicketPrice());
+			cstmt.setInt(9, vo.getYseats());
+			cstmt.setInt(10, vo.getXseats());
+
+			value = cstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBPoolUtil2.dbReleaseClose(null, cstmt, con);
+		}
+		return value;
+	}
+	public int getArticleCount(String genre) {
+		int cnt = 0;
+		Connection con = null;
+		CallableStatement cstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "{CALL PERFORMANCETBL_COUNT(?,?)}";
+			con =DBPoolUtil2.makeConnection();
+			cstmt = con.prepareCall(sql);
+			cstmt.setString(1,genre);
+			cstmt.registerOutParameter(2, Types.INTEGER);
+
+			cstmt.executeQuery();
+			cnt = cstmt.getInt(2);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBPoolUtil2.dbReleaseClose(rs, cstmt, con);
+		}
+		return cnt;
+	}
+
 }

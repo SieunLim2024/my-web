@@ -11,8 +11,7 @@
 <link rel="stylesheet" href="./css/main.css?ver=${nowDate}">
 <script src="https://kit.fontawesome.com/8402defbf8.js"
 	crossorigin="anonymous"></script>
-<script src="./js/main.js?ver=${nowDate}11">
-	
+<script src="./js/main.js?ver=${nowDate}">
 </script>
 </head>
 <body onload="call_js()">
@@ -36,7 +35,8 @@
 					</div></li>
 				<li class="menu"><a href="" class="drop">Reservation</a>
 					<div class="drop">
-						<a href="#" onclick="reservationFrom()">예약 하기</a> <a href="#">예약 확인하기</a>
+						<a href="#" onclick="performanceList()">공연 보기</a> <a href="#">예약 확인하기</a>
+						<a href="#" onclick="reservationForm()">디너 예약</a> <a href="#">예약 확인하기</a>
 					</div></li>
 				<li class="menu"><a href="" class="drop">Contact</a>
 					<div class="drop">

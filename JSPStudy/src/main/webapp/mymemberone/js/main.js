@@ -104,7 +104,11 @@ function board(boardTitle) {
     let str = '<object scrolling="no" width="100%" height="100%" type="text/html" data="./' + boardTitle.toLowerCase() +'/'+ boardTitle +'List.jsp"></object>'
     section1.innerHTML = str;
 }
-function reservationFrom(){
+function reservationForm(){
     let section1 = document.querySelector("#section1");
     section1.innerHTML = '<object scrolling="no" width="100%" height="100%" type="text/html" data="./reservation/reservationForm.jsp"></object>';
+}
+function performanceList(){
+    let section1 = document.querySelector("#section1");
+    section1.innerHTML = '<object scrolling="no" width="100%" height="100%" type="text/html" data="./performance/performanceList.jsp"></object>';
 }
