@@ -5,6 +5,8 @@
 <%@ page import="mymemberone.PerformanceVO"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.text.SimpleDateFormat"%>
+<jsp:useBean id="today" class="java.util.Date" />
+<fmt:formatDate value="${today}" pattern="yyyyMMddHHmmss" var="nowDate" />
 <%
 int pageSize = 5;
 %>
@@ -59,7 +61,7 @@ if (count > 0) {
 				%>
 				<tr height="30">
 					<td align="center" width="300">
-						<a href="./performance/selectSeat.jsp?performanceId=<%= article.getPerformanceId() %>">
+						<a href="selectSeat.jsp?performanceId=<%= article.getPerformanceId() %>&totalSeats=<%= article.getTotalSeats() %>&xseats=<%= article.getXseats() %>&yseats=<%= article.getYseats() %>">
 							<%=article.getPerformanceName()%>
 						</a>
 					</td>

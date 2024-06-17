@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+html{
+	text-align: center;
+}
+p {
+	margin-bottom: 0;
+}
+
+div.submit-button {
+  margin: 20px auto 0 auto;
+	
+}
