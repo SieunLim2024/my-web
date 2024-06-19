@@ -1,17 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="today" class="java.util.Date" />
-<fmt:formatDate value="${today}" pattern="yyyyMMddHHmmss" var="nowDate" />
+	
+<%@ page import="java.util.*"%>
+<%@ page import="java.text.SimpleDateFormat"%>	
+<%	
+Date now = new Date();
+SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
+String formatedNow = formatter.format(now);
+%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>메인 페이지</title>
-<link rel="stylesheet" href="./css/main.css?ver=${nowDate}">
+<link rel="stylesheet" href="./css/main.css?ver=<%= formatedNow %>">
 <script src="https://kit.fontawesome.com/8402defbf8.js"
 	crossorigin="anonymous"></script>
-<script src="./js/main.js?ver=${nowDate}">
+<script src="./js/main.js?ver=<%= formatedNow %>">
 </script>
 </head>
 <body onload="call_js()">
@@ -22,7 +28,7 @@
 				src="./img/onthetable1_white.png" alt="상호" style="height: 40px;">
 		</div>
 		<div class="right">
-			<a href="main.jsp">Home</a> <a href="#">Sitemap</a>
+			<a href="main.jsp">Home</a> &nbsp;&nbsp; <a href="#" onclick="cartList()"><i class="fa-solid fa-cart-shopping"></i></a>
 		</div>
 	</header>
 	<nav>
