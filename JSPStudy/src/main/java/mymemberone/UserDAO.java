@@ -1,17 +1,19 @@
 package mymemberone;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import jdbc.DBPoolUtil2;
-
 
 public class UserDAO {
 	private static UserDAO instance = null;
@@ -258,6 +260,29 @@ public class UserDAO {
 			DBPoolUtil2.dbReleaseClose(rs, pstmt, conn);
 		}
 		return list;
+	}
+
+	public static int getMileage(String userId) {
+		int mileage = 0;
+		String sql = "CALL USERTBL_MILEAGE(?,?)";
+		Connection con = null;
+		CallableStatement cstmt = null;
+		ResultSet rs = null;
+		try {
+			con = DBPoolUtil2.makeConnection();
+			cstmt = con.prepareCall(sql);
+			cstmt.setString(1, userId);
+			cstmt.registerOutParameter(2, Types.INTEGER);
+			cstmt.execute();
+
+			mileage = cstmt.getInt(2);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBPoolUtil2.dbReleaseClose(rs, cstmt, con);
+		}
+		return mileage;
 	}
 
 }

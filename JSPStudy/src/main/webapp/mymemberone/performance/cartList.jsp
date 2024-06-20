@@ -27,7 +27,7 @@ articleList = dbPro.selectArticle(userId);
 <body>
 	<%
 	System.out.println(articleList.size()+userId);
-/* 	if (userId!=null&&articleList.size() > 0) { */
+if (userId!=null&&articleList.size() > 0) {
 	%>
 	<form id="cartForm" method="post">
 		<table border="1" width="700" cellpadding="0" cellspacing="0"
@@ -63,7 +63,7 @@ articleList = dbPro.selectArticle(userId);
 			<input type="button" onclick="setActionAndSubmit('./paymentForm.jsp')" value="결제하기">
 		</div>
 	</form>
-<%-- 	<%
+ 	<%
 	} else if(userId==null) {
 	%>
 		<p>로그인 해주세요</p>
@@ -74,7 +74,7 @@ articleList = dbPro.selectArticle(userId);
 		<p>장바구니가 비어 있습니다.</p>
 	<%
 	}
-	%> --%>
+	%>
 
 </body>
 </html>

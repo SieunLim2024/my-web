@@ -82,8 +82,8 @@ public class CartDAO {
 		return list;
 	}
 	
-	public static ArrayList<HashMap> selectArticle(String userId,int no ) {
-		ArrayList<HashMap> list = new ArrayList<>();
+	public static  HashMap<String, String> selectArticle(String userId,String no ) {
+		HashMap<String, String> map = new HashMap<>();
 		String sql = "CALL CARTTBL_SELECT_NO(?,?,?)";
 		Connection con = null;
 		CallableStatement cstmt = null;
@@ -93,12 +93,12 @@ public class CartDAO {
 			con = DBPoolUtil2.makeConnection();
 			cstmt = con.prepareCall(sql);
 			cstmt.setString(1, userId);
-			cstmt.setInt(2, no);
+			cstmt.setInt(2, Integer.parseInt(no));
 			cstmt.registerOutParameter(3, Types.REF_CURSOR);
 			cstmt.execute();
-			rs=(ResultSet)cstmt.getObject(2);
+			rs=(ResultSet)cstmt.getObject(3);
 			while (rs.next()) {
-				HashMap<String, String> map = new HashMap<>();
+				
 				map.put("no", rs.getString("no"));
 				map.put("performanceId", rs.getString("performanceid"));
 				map.put("genre", rs.getString("genre"));
@@ -106,14 +106,15 @@ public class CartDAO {
 				map.put("performanceName", rs.getString("performancename"));
 				map.put("seatNum", rs.getString("seatnum"));
 				map.put("dayOfPerformance", rs.getString("dayOfPerformance"));
+				map.put("ticketPrice", rs.getString("ticketprice"));
 
-				list.add(map);
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBPoolUtil2.dbReleaseClose(rs, cstmt, con);
 		}
-		return list;
+		return map;
 	}
 }

@@ -7,8 +7,7 @@ public class PaymentVO {
 	private String seatNum;
 	private String paymentDate;
 	private int discount;
-	private int quantity;
-	private int totalPrice;
+	private int useMileage;
 	public int getNo() {
 		return no;
 	}
@@ -45,18 +44,13 @@ public class PaymentVO {
 	public void setDiscount(int discount) {
 		this.discount = discount;
 	}
-	public int getQuantity() {
-		return quantity;
+	public int getUseMileage() {
+		return useMileage;
 	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setUseMileage(int useMileage) {
+		this.useMileage = useMileage;
 	}
-	public int getTotalPrice() {
-		return totalPrice;
-	}
-	public void setTotalPrice(int totalPrice) {
-		this.totalPrice = totalPrice;
-	}
+
 	
 	
 }
