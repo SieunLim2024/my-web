@@ -5,11 +5,13 @@
 <%@page
 	import="org.apache.commons.collections4.bag.SynchronizedSortedBag"%>
 <%@ page import="mymemberone.*"%>
-<%@ page import="java.util.List"%>
-<%@ page import="java.text.SimpleDateFormat"%>
-<jsp:useBean id="today" class="java.util.Date" />
-<fmt:formatDate value="${today}" pattern="yyyyMMddHHmmss" var="nowDate" />
-<%
+<%@ page import="java.util.*"%>
+<%@ page import="java.text.SimpleDateFormat"%>	
+<%	
+Date now = new Date();
+SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
+String formatedNow = formatter.format(now);
+
 String userId = (String) session.getAttribute("loginID");
 List<HashMap> articleList = null;
 CartDAO dbPro = CartDAO.getInstance();
@@ -20,9 +22,9 @@ articleList = dbPro.selectArticle(userId);
 <head>
 <meta charset="UTF-8">
 <title>장바구니 보기</title>
-<link href="../css/cartlist.css?ver=${nowDate}" rel="stylesheet"
+<link href="../css/performancelist.css?ver=${formatedNow}" rel="stylesheet"
 	type="text/css">
-<script src="../js/cartList.js?ver=${nowDate}"></script>
+<script src="../js/cartList.js?ver=${formatedNow}"></script>
 </head>
 <body>
 	<%

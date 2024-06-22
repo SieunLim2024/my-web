@@ -14,7 +14,6 @@ UserDAO userdbProc = UserDAO.getInstance();
 
 String userId = (String) session.getAttribute("loginID");
 String[] reservationNos = request.getParameterValues("reservation");
-System.out.println("길이" + reservationNos.length);
 List<HashMap> articleList = new ArrayList<>();
 if (reservationNos != null) {
 	for (int i = 0; i < reservationNos.length; i++) {
@@ -31,17 +30,14 @@ Map<String, int[]> countMap = new HashMap<>();
 
 for (HashMap<String, String> map : articleList) {
 	String key = map.get("performanceId");
-	System.out.println(key);
 	if (key != null) {
 		if (countMap.containsKey(key)) {
-			int[] value = countMap.get(key);
-			value[0]++;
-			value[1] += Integer.parseInt(map.get("ticketPrice"));
-			countMap.put(key, value);
-			System.out.println(key+","+value[0]+","+value[1]);
+	int[] value = countMap.get(key);
+	value[0]++;
+	value[1] += Integer.parseInt(map.get("ticketPrice"));
+	countMap.put(key, value);
 		} else {
 	countMap.put(key, new int[] { 1, Integer.parseInt(map.get("ticketPrice")) });
-	System.out.println(key+"넣음");
 		}
 	}
 }
@@ -54,7 +50,7 @@ for (HashMap<String, String> map : articleList) {
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <link rel="stylesheet"
-	href="../css/paymentForm.css?ver=<%=formatedNow%>"></link>
+	href="../css/performancelist.css?ver=<%=formatedNow%>"></link>
 <script src="../js/paymentForm.js?ver=<%=formatedNow%>"></script>
 </head>
 
@@ -63,22 +59,22 @@ for (HashMap<String, String> map : articleList) {
 		<P>주문 상품</P>
 		<table id="selectedItem">
 			<tr height="30">
-				<td align="center" width="300">공연명</td>
-				<td align="center" width="150">장르</td>
-				<td align="center" width="150">공연일</td>
-				<td align="center" width="250">공연장</td>
-				<td align="center" width="150">좌석 번호</td>
+				<td align="center" width="24%">공연명</td>
+				<td align="center" width="19%">장르</td>
+				<td align="center" width="19%">공연일</td>
+				<td align="center" width="19%">공연장</td>
+				<td align="center" width="19%">좌석 번호</td>
 			</tr>
 			<%
 			for (int i = 0; i < articleList.size(); i++) {
 				HashMap<String, String> map = (HashMap<String, String>) articleList.get(i);
 			%>
 			<tr height="30">
-				<td align="center" width="300"><%=map.get("performanceName")%></td>
-				<td align="center" width="150"><%=map.get("genre")%></td>
-				<td align="center" width="150"><%=map.get("dayOfPerformance")%></td>
-				<td align="center" width="200"><%=map.get("venue")%></td>
-				<td align="center" width="150"><%=map.get("seatNum")%></td>
+				<td align="center" width="24%"><%=map.get("performanceName")%></td>
+				<td align="center" width="19%"><%=map.get("genre")%></td>
+				<td align="center" width="19%"><%=map.get("dayOfPerformance")%></td>
+				<td align="center" width="19%"><%=map.get("venue")%></td>
+				<td align="center" width="19%"><%=map.get("seatNum")%></td>
 				<td><input type="hidden" name="reservation"
 					value="<%=map.get("no")%>"></td>
 			</tr>
@@ -127,41 +123,46 @@ for (HashMap<String, String> map : articleList) {
 					setSize = set.size();
 					int[] count = countMap.get(map.get("performanceId"));
 			%>
+			<tr>
+				<td style="border: 0px;"><input type="hidden"
+					name="reservation" value="<%=map.get("no")%>"></td>
+			</tr>
 			<tr height="30">
 				<td align="center" width="300"><%=map.get("performanceName")%></td>
 				<td align="center" width="150"><%=count[0]%></td>
 				<td align="center" width="150"><%=count[1]%></td>
-				<td><input type="hidden" name="reservation"
-					value="<%=map.get("no")%>"></td>
 			</tr>
 			<%
 			}
 			}
 			%>
 			<tr height="30">
-				<td>주문 금액: </td>
-				<td colspan="3" align="right"><%=totalPrice%></td>
+				<td>주문 금액:</td>
+				<td colspan="2" align="right"><%=totalPrice%></td>
 			</tr>
 			<tr height="30">
 				<td>마일리지 사용:</td>
 				<td colspan="2" align="right"></td>
 			</tr>
-				<td>등급 할인: </td>
 			<tr height="30">
-				<td colspan="2" align="right"><%=%></td>
+				<td>등급 할인:</td>
+				<td colspan="2" align="right"></td>
 			</tr>
 			<tr height="30">
-				<td>최종 금액: </td>
+				<td>최종 금액:</td>
 				<td colspan="2" align="right"><%=totalPrice%></td>
 			</tr>
 		</table>
 
 		<p>배송지</p>
-		<input type="button" value="회원정보와 동일" id="adressDefualt"
-			onclick="adressDefualt()">
-		<table id="adress">
+		<div class="button">
+			<input type="button" value="회원정보와 동일" id="adressDefualt"
+				onclick="adressDefualt()">
+		</div>
+
+		<table class="adress">
 			<tr>
-				<td>받는 이</td>
+				<th>받는 이</th>
 				<td>
 					<div>
 						<input type="text" name="userName" id="userName"
@@ -172,7 +173,7 @@ for (HashMap<String, String> map : articleList) {
 				</td>
 			</tr>
 			<tr>
-				<td>연락처</td>
+				<th>연락처</th>
 				<td>
 					<div>
 						<input type="text" name="phoneNum" id="phoneNum"
@@ -210,9 +211,8 @@ for (HashMap<String, String> map : articleList) {
 
 		</table>
 
-		<div class="submit-button">
+		<div class="button">
 			<button type="submit">결제 하기</button>
-
 		</div>
 	</form>
 </body>

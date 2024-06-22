@@ -1,26 +1,54 @@
 @charset "UTF-8";
 
 table {
-    margin: 20px auto;
-    border-collapse: collapse;
-    border-top: 1px solid black;
+	width: 70%;
+	margin: 20px auto;
+	border-collapse: collapse;
+	border-top: 1px solid black;
+	margin: 20px auto;
 }
 
 td, th {
-    border-bottom: 1px solid black;
-    border-collapse: collapse;
+	border-bottom: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
 }
+
 a:link {
-    text-decoration: none;
-    color: #696969;
+	text-decoration: none;
+	color: #696969;
 }
 
 a:hover {
-    text-decoration: underline;
-    color: #66CCFF;
+	text-decoration: underline;
+	color: #66CCFF;
 }
 
 a:visited {
-    text-decoration: none;
-    color: #330066;
+	text-decoration: none;
+	color: #330066;
+}
+
+p {
+	text-align: center;
+}
+
+div.button {
+	width: 70%;
+	margin: 20px auto 0 auto;
+}
+
+table.adress>tbody>tr>td {
+	display: flex;
+	flex-direction: row;
+}
+
+table.adress>tbody>tr.adress>td {
+	display: flex;
+	flex-direction: column;
+}
+
+table.adress>tbody>tr>td>div {
+	display: flex;
+	flex-direction: column;
 }
