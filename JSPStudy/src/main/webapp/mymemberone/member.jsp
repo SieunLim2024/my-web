@@ -190,7 +190,7 @@
 				<td>
 					<div>
 						<input type="text" name="userId" id="userId"
-							onkeyup="userIdChek()"> <span id="userIdInfo"
+							onchange="userIdChek()"> <span id="userIdInfo"
 							style="color: red;"></span>
 					</div> <input type="button" onClick="idCheck(this.form.userId.value)"
 					value="ID 중복확인" />
@@ -201,7 +201,7 @@
 				<td>
 					<div>
 						<input type="password" name="userPw" id="userPw"
-							onkeyup="userPwChek()"> <span id="userPwInfo"
+							onchange="userPwChek()"> <span id="userPwInfo"
 							style="color: red;"></span>
 
 					</div>
@@ -212,7 +212,7 @@
 				<td>
 					<div>
 						<input type="password" name="userPwCheck" id="userPwCheck"
-							onkeyup="userPwCheckChek()"> <span id="userPwCheckInfo"
+							onchange="userPwCheckChek()"> <span id="userPwCheckInfo"
 							style="color: red;"></span>
 					</div>
 				</td>
@@ -222,7 +222,7 @@
 				<td>
 					<div>
 						<input type="text" name="userName" id="userName"
-							onkeyup="userNameChek()"> <span id="userNameInfo"
+							onchange="userNameChek()"> <span id="userNameInfo"
 							style="color: red;"></span>
 					</div>
 
@@ -232,7 +232,7 @@
 				<th>E-mail</th>
 				<td>
 					<div>
-						<input type="email" name="email" id="email" onkeyup="emailChek()">
+						<input type="email" name="email" id="email" onchange="emailChek()">
 						<span id="emailInfo" style="color: red;"></span>
 					</div>
 
@@ -269,7 +269,7 @@
 				<td>
 					<div>
 						<input type="text" name="phoneNum" id="phoneNum"
-							onkeyup="phoneNumChek()"> <span id="phoneNumInfo"
+							onchange="phoneNumChek()"> <span id="phoneNumInfo"
 							style="color: red;"></span>
 					</div>
 				</td>

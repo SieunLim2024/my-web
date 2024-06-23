@@ -32,7 +32,7 @@ String performanceID = "pID" + strDate;
 				<td>
 					<div>
 						<input type="text" name="performanceName" id="performanceName"
-							onkeyup="nameCheck()"> <span id="nameInfo"
+							onchange="nameCheck()"> <span id="nameInfo"
 							style="color: red;"></span>
 					</div>
 				</td>
@@ -51,7 +51,7 @@ String performanceID = "pID" + strDate;
 					<div id="customOption" style="display: none;">
 						<label for="customGenre" style="font-size: 15px">&nbsp;&nbsp;기타
 							장르:</label> <input type="text" id="customGenre" name="customGenre"
-							onkeyup="customGenreCheck()">
+							onchange="customGenreCheck()">
 					</div>
 				</td>
 			</tr>
@@ -70,7 +70,7 @@ String performanceID = "pID" + strDate;
 				<th>장소</th>
 				<td>
 					<div>
-						<input type="venue" name="venue" id="venue" onkeyup="venueCheck()">
+						<input type="venue" name="venue" id="venue" onchange="venueCheck()">
 						<span id="venueInfo" style="color: red;"></span>
 					</div>
 

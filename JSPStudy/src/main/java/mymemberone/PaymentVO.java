@@ -5,9 +5,7 @@ public class PaymentVO {
 	private String userId;
 	private String performanceId;
 	private String seatNum;
-	private String paymentDate;
-	private int discount;
-	private int useMileage;
+	private int receiptid;
 	public int getNo() {
 		return no;
 	}
@@ -32,25 +30,14 @@ public class PaymentVO {
 	public void setSeatNum(String seatNum) {
 		this.seatNum = seatNum;
 	}
-	public String getPaymentDate() {
-		return paymentDate;
+	public int getReceiptid() {
+		return receiptid;
 	}
-	public void setPaymentDate(String paymentDate) {
-		this.paymentDate = paymentDate;
+	public void setReceiptid(int receiptid) {
+		this.receiptid = receiptid;
 	}
-	public int getDiscount() {
-		return discount;
-	}
-	public void setDiscount(int discount) {
-		this.discount = discount;
-	}
-	public int getUseMileage() {
-		return useMileage;
-	}
-	public void setUseMileage(int useMileage) {
-		this.useMileage = useMileage;
-	}
-
+	
+	
 	
 	
 }

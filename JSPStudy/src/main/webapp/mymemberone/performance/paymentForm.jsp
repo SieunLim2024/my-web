@@ -11,8 +11,11 @@ String formatedNow = formatter.format(now);
 
 CartDAO dbPro = CartDAO.getInstance();
 UserDAO userdbProc = UserDAO.getInstance();
-
 String userId = (String) session.getAttribute("loginID");
+
+UserVO user = userdbProc.getMember(userId);
+boolean flagDefualt = false;
+
 String[] reservationNos = request.getParameterValues("reservation");
 List<HashMap> articleList = new ArrayList<>();
 if (reservationNos != null) {
@@ -37,7 +40,7 @@ for (HashMap<String, String> map : articleList) {
 	value[1] += Integer.parseInt(map.get("ticketPrice"));
 	countMap.put(key, value);
 		} else {
-	countMap.put(key, new int[] { 1, Integer.parseInt(map.get("ticketPrice")) });
+	countMap.put(key, new int[]{1, Integer.parseInt(map.get("ticketPrice"))});
 		}
 	}
 }
@@ -51,7 +54,50 @@ for (HashMap<String, String> map : articleList) {
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <link rel="stylesheet"
 	href="../css/performancelist.css?ver=<%=formatedNow%>"></link>
-<script src="../js/paymentForm.js?ver=<%=formatedNow%>"></script>
+<script src="../js/payment.js?ver=<%=formatedNow%>"></script>
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript">
+	function adressDefualt() {
+		 var userName = "<%=user.getUserName()%>";
+         var phoneNum = "<%=user.getPhoneNum()%>";
+         var addressNum = "<%=user.getAdressNum()%>";
+         var address1 = "<%=user.getAdress1()%>";
+         var address2 = "<%=user.getAdress2()%>";
+         var address3 = "<%=user.getAdress3()%>";
+
+		document.getElementById("userName").value = userName;
+		document.getElementById("phoneNum").value = phoneNum;
+		document.getElementById("adressNum").value = addressNum;
+		document.getElementById("adress1").value = address1;
+		document.getElementById("adress2").value = address2;
+		document.getElementById("adress3").value = address3;
+	}
+	function useMileageCheck() {
+		var mileage = <%=mileage%> ;
+		var useMileageInput = document.getElementById("useMileageInput").value;
+		var useMileage = document.getElementById("useMileage").value;
+		var useMileageSpan = document.getElementById("useMileageSpan").value;
+		var mileageInfo = document.getElementById("mileageInfo");
+		
+
+		if (useMileageInput > mileage) {
+			mileageInfo.textContent = "사용할 마일리지가 보유 마일리지보다 많습니다.";
+			useMileageInput = 0;
+			return false;
+		} else if (useMileageInput < 0) {
+			mileageInfo.textContent = "사용할 마일리지는 0보다 작을 수 없습니다.";
+			useMileageInput = 0;
+			return false;
+		} else {
+			mileageInfo.textContent = " 정상적으로 확인 되었습니다.";
+		}
+		useMileage=useMileageInput;
+		useMileageSpan=useMileageInput;
+		
+		return true;
+	}
+</script>
 </head>
 
 <body>
@@ -82,25 +128,26 @@ for (HashMap<String, String> map : articleList) {
 			}
 			%>
 		</table>
-
+		<br> <br>
 		<P>마일리지 사용</P>
-		<table id="mileage">
+		<table class="mileage">
 			<tr>
-				<td>보유 마일리지</td>
-				<td><%=mileage%>
+				<th>보유 마일리지</th>
+				<td id="mileage"><%=mileage%>
 				<td>
 			</tr>
 			<tr>
-				<td>사용할 마일리지</td>
+				<th>사용할 마일리지</th>
 				<td>
-					<div>
-						<input type="text" name="mileage" id="mileage"
-							onkeyup="mileageCheck()"> <span id="mileageInfo"
-							style="color: red;"></span>
+					<div class="mileage">
+						<input type="number" name="useMileageInput" id="useMileageInput"
+							onchange="useMileageCheck()" value="0"> <span
+							id="mileageInfo" style="color: red;"></span>
 					</div>
 				<td>
 			</tr>
 		</table>
+		<br> <br>
 		<p>결제 상세</p>
 		<table id="recreipt">
 			<tr height="30">
@@ -140,23 +187,31 @@ for (HashMap<String, String> map : articleList) {
 				<td>주문 금액:</td>
 				<td colspan="2" align="right"><%=totalPrice%></td>
 			</tr>
-			<tr height="30">
+			<tr height="30" name="useMileage">
 				<td>마일리지 사용:</td>
-				<td colspan="2" align="right"></td>
+				<td colspan="2" align="right"><span id="useMileageSpan"></span></td>
 			</tr>
-			<tr height="30">
+			<tr height="30" name="gadeDiscount">
 				<td>등급 할인:</td>
-				<td colspan="2" align="right"></td>
+				<td colspan="2" align="right"><span id="gadeDiscount"></span></td>
 			</tr>
 			<tr height="30">
 				<td>최종 금액:</td>
-				<td colspan="2" align="right"><%=totalPrice%></td>
+				<td colspan="2" align="right"><span id="totalPrice"></span></td>
 			</tr>
 		</table>
-
+		<input type="hidden" name="price" id="price">
+		<!-- 주문금액-->
+		<input type="hidden" name="useMileage" id="useMileage"> <input
+			type="hidden" name="gadeDiscount" id="gadeDiscount"> <input
+			type="hidden" name="totalPrice" id="totalPrice"> 
+			
+		<br> <br>
+			
+			
 		<p>배송지</p>
 		<div class="button">
-			<input type="button" value="회원정보와 동일" id="adressDefualt"
+			<input type="button" value="회원정보와 동일"
 				onclick="adressDefualt()">
 		</div>
 
@@ -166,10 +221,9 @@ for (HashMap<String, String> map : articleList) {
 				<td>
 					<div>
 						<input type="text" name="userName" id="userName"
-							onkeyup="userNameChek()"> <span id="userNameInfo"
+							onchange="userNameCheck()"> <span id="userNameInfo"
 							style="color: red;"></span>
 					</div>
-
 				</td>
 			</tr>
 			<tr>
@@ -177,7 +231,7 @@ for (HashMap<String, String> map : articleList) {
 				<td>
 					<div>
 						<input type="text" name="phoneNum" id="phoneNum"
-							onkeyup="phoneNumChek()"> <span id="phoneNumInfo"
+							onchange="phoneNumCheck()"> <span id="phoneNumInfo"
 							style="color: red;"></span>
 					</div>
 				</td>

@@ -31,17 +31,17 @@ public class UserDAO {
 		return instance;
 	}
 
-	private Connection getConnection() {
-		Connection conn = null;
-		try {
-			Context init = new InitialContext();
-			DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/myOracle");
-			conn = ds.getConnection();
-		} catch (Exception e) {
-			System.err.println("Connection 생성실패");
-		}
-		return conn;
-	}
+//	private Connection getConnection() {
+//		Connection conn = null;
+//		try {
+//			Context init = new InitialContext();
+//			DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/myOracle");
+//			conn = ds.getConnection();
+//		} catch (Exception e) {
+//			System.err.println("Connection 생성실패");
+//		}
+//		return conn;
+//	}
 
 	// 아이디 체크 기능
 	public boolean idCheck(String id) {
@@ -107,7 +107,7 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {// 해당 아이디에 대한 회원이 존재
 				vo = new UserVO();
-				vo.setUserId(rs.getString("userid"));// 대소문자 상관 없나?
+				vo.setUserId(rs.getString("userid"));
 				vo.setUserPw(rs.getString("userpw"));
 				vo.setUserName(rs.getString("username"));
 				vo.setEmail(rs.getString("email"));
