@@ -16,9 +16,9 @@ System.out.println("size="+list.size());
 <title>회원 관리</title>
 </head>
 <body>
-<h2>삭제할 회원 선택</h2>
+<h2 align="center">삭제할 회원 선택</h2>
 <form action="deleteFormAdminProc.jsp" method="post">
-	<table align="center" width="1000" border="1">
+	<table align="center" border="1">
 		<tr>
 			<th>사용자 ID</th>
 			<th>비밀번호</th>
@@ -54,6 +54,7 @@ System.out.println("size="+list.size());
 		</table>
 		<div style="text-align:center; margin-top:20px;">
         <input type="submit" value="삭제">
+        <input type="button" value="뒤로가기" onclick="window.location='../login.jsp'">
     </div>
 </form>
 </body>

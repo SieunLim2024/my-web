@@ -116,3 +116,7 @@ function cartList(){
     let section1 = document.querySelector("#section1");
     section1.innerHTML = '<object scrolling="no" width="100%" height="100%" type="text/html" data="./performance/cartList.jsp"></object>';
 }
+function paymentList(){
+    let section1 = document.querySelector("#section1");
+    section1.innerHTML = '<object scrolling="no" width="100%" height="100%" type="text/html" data="./performance/paymentList.jsp"></object>';
+}

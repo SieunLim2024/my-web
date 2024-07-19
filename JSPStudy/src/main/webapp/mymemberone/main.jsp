@@ -24,11 +24,16 @@ String formatedNow = formatter.format(now);
 	<header>
 		<div class="left" onclick="location.href='main.jsp'"
 			style="cursor: pointer;">
-			<img src="./img/logo_white.png" alt="로고"> <img
-				src="./img/onthetable1_white.png" alt="상호" style="height: 40px;">
+<!-- 			<img src="./img/logo_white.png" alt="로고">  -->
+			<img src="./img/movie-ticket.png" alt="로고" style="height: 40px;"> 
+			<img src="./img/onthetable1_white.png" alt="상호" style="height: 40px;">
 		</div>
 		<div class="right">
-			<a href="main.jsp">Home</a> &nbsp;&nbsp; <a href="#" onclick="cartList()"><i class="fa-solid fa-cart-shopping"></i></a>
+			<a href="main.jsp">Home</a> 
+			&nbsp;&nbsp; 
+			<a href="#" onclick="cartList()"><i class="fa-solid fa-cart-shopping"></i></a>
+			 &nbsp;
+			<a href="#" onclick="paymentList()"><i class="fa-solid fa-truck"></i></i></a>
 		</div>
 	</header>
 	<nav>
@@ -41,12 +46,12 @@ String formatedNow = formatter.format(now);
 					</div></li>
 				<li class="menu"><a href="" class="drop">Reservation</a>
 					<div class="drop">
-						<a href="#" onclick="performanceList()">공연 보기</a> <a href="#">예약 확인하기</a>
+						<a href="#" onclick="performanceList()">공연 보기</a> <a href="#" onclick="paymentList()">예매 확인하기</a>
 						<a href="#" onclick="reservationForm()">디너 예약</a> <a href="#">예약 확인하기</a>
 					</div></li>
 				<li class="menu"><a href="" class="drop">Contact</a>
 					<div class="drop">
-						<a href="#" onclick="board('freeBoard')">자유 게시판</a> <a href="#" onclick="board('mediaBoard')">자료
+						<a href="#" onclick="board('freeBoard')">자유 게시판</a> <a href="#" onclick="b																		oard('mediaBoard')">자료
 							게시판</a> <a href="#">건의 게시판</a>
 					</div></li>
 			</ul>
@@ -96,6 +101,7 @@ String formatedNow = formatter.format(now);
         <div class="footer2">
             <p>on The Table: 서울시 중구 개발자로 1길 8282 열공빌딩 1층 tel:12-345-6789</p>
             <p>2024 ⓒ on The Table. All Rights Reserved</p>
+            <p><a href="https://kr.freepik.com/free-vector/yeonghwa-tikes-gaenyeom-geulim_66197434.htm#fromView=search&page=1&position=16&uuid=8da269a7-bdb7-45e1-a60d-ed0cb28fe03f">작가 storyset 출처 Freepik</a></p>
         </div>
     </footer>
 </body>

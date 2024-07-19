@@ -1,5 +1,4 @@
 <%@page import="jakarta.websocket.Session"%>
-<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page
@@ -27,6 +26,7 @@ articleList = dbPro.selectArticle(userId);
 <script src="../js/cartList.js?ver=${formatedNow}"></script>
 </head>
 <body>
+<h2 align="center">장바구니</h2>
 	<%
 	System.out.println(articleList.size()+userId);
 if (userId!=null&&articleList.size() > 0) {

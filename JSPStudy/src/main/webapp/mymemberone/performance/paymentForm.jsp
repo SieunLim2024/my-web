@@ -75,25 +75,32 @@ for (HashMap<String, String> map : articleList) {
 	}
 	function useMileageCheck() {
 		var mileage = <%=mileage%> ;
+		var price =  document.getElementById("price").value;
 		var useMileageInput = document.getElementById("useMileageInput").value;
-		var useMileage = document.getElementById("useMileage").value;
-		var useMileageSpan = document.getElementById("useMileageSpan").value;
 		var mileageInfo = document.getElementById("mileageInfo");
 		
 
 		if (useMileageInput > mileage) {
 			mileageInfo.textContent = "사용할 마일리지가 보유 마일리지보다 많습니다.";
-			useMileageInput = 0;
+			document.getElementById("useMileageInput").value = mileage;
+			document.getElementById("useMileageSpan").textContent= mileage;
+			document.getElementById("totalPriceSpan").textContent=price-mileage;
+			document.getElementById("totalPrice").value =price- mileage;
 			return false;
 		} else if (useMileageInput < 0) {
 			mileageInfo.textContent = "사용할 마일리지는 0보다 작을 수 없습니다.";
-			useMileageInput = 0;
+			document.getElementById("totalPrice").value =price;
+			document.getElementById("useMileageSpan").textContent= 0;
+			document.getElementById("totalPriceSpan").textContent=price-0;
+			document.getElementById("useMileageInput").value = 0;
 			return false;
 		} else {
 			mileageInfo.textContent = " 정상적으로 확인 되었습니다.";
+			document.getElementById("useMileage").value= useMileageInput;
+			document.getElementById("useMileageSpan").textContent= useMileageInput;
+			document.getElementById("totalPriceSpan").textContent=price-useMileageInput;
+			document.getElementById("totalPrice").value =price- useMileageInput;
 		}
-		useMileage=useMileageInput;
-		useMileageSpan=useMileageInput;
 		
 		return true;
 	}
@@ -153,7 +160,7 @@ for (HashMap<String, String> map : articleList) {
 			<tr height="30">
 				<td align="center" width="300">공연명</td>
 				<td align="center" width="150">수량</td>
-				<td align="center" width="150">가격</td>
+				<td align="center" width="150">합계</td>
 
 			</tr>
 			<%
@@ -170,10 +177,10 @@ for (HashMap<String, String> map : articleList) {
 					setSize = set.size();
 					int[] count = countMap.get(map.get("performanceId"));
 			%>
-			<tr>
+<%-- 			<tr>
 				<td style="border: 0px;"><input type="hidden"
 					name="reservation" value="<%=map.get("no")%>"></td>
-			</tr>
+			</tr> --%>
 			<tr height="30">
 				<td align="center" width="300"><%=map.get("performanceName")%></td>
 				<td align="center" width="150"><%=count[0]%></td>
@@ -191,25 +198,25 @@ for (HashMap<String, String> map : articleList) {
 				<td>마일리지 사용:</td>
 				<td colspan="2" align="right"><span id="useMileageSpan"></span></td>
 			</tr>
-			<tr height="30" name="gadeDiscount">
+			<!-- <tr height="30" name="gadeDiscount">
 				<td>등급 할인:</td>
-				<td colspan="2" align="right"><span id="gadeDiscount"></span></td>
-			</tr>
+				<td colspan="2" align="right"><span id="gadeDiscountSpan"></span></td>
+			</tr> -->
 			<tr height="30">
 				<td>최종 금액:</td>
-				<td colspan="2" align="right"><span id="totalPrice"></span></td>
+				<td colspan="2" align="right"><span id="totalPriceSpan"></span></td>
 			</tr>
 		</table>
-		<input type="hidden" name="price" id="price">
+		<input type="hidden" name="price" id="price" value="<%=totalPrice%>">
 		<!-- 주문금액-->
-		<input type="hidden" name="useMileage" id="useMileage"> <input
-			type="hidden" name="gadeDiscount" id="gadeDiscount"> <input
-			type="hidden" name="totalPrice" id="totalPrice"> 
+		<input type="hidden" name="totalPrice" id="totalPrice" value="<%=totalPrice%>"> 
+		<input type="hidden" name="useMileage" id="useMileage"  value="0"> 
+
 			
 		<br> <br>
 			
 			
-		<p>배송지</p>
+		<!-- <p>배송지</p>
 		<div class="button">
 			<input type="button" value="회원정보와 동일"
 				onclick="adressDefualt()">
@@ -263,7 +270,7 @@ for (HashMap<String, String> map : articleList) {
 				</td>
 			</tr>
 
-		</table>
+		</table> -->
 
 		<div class="button">
 			<button type="submit">결제 하기</button>

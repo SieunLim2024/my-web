@@ -78,9 +78,9 @@ if (count > 0) {
 				}
 				%>
 			</table>
-			<div style="text-align: center; margin-top: 20px;">
+<!-- 			<div style="text-align: center; margin-top: 20px;">
 				<input type="submit" value="예약하기">
-			</div>
+			</div> -->
 <!-- 		</form> -->
 		<%
 		}

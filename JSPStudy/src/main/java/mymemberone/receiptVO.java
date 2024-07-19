@@ -1,50 +1,53 @@
 package mymemberone;
 
 
-public class receiptVO {
-	private int RECEIPTID;
-	private int PRICE;
-	private int GRADEDISCOUNT;
-	private int TOTALPRICE;
-	private String PAYMENTDATE;
-	private int USEMILEAGE;
+public class ReceiptVO {
+	private int receiptId;
+	private int price;
+	private int totalPrice;
+	private String paymentDate;
+	private int useMileage;
+	private String userId;
 	
-	public int getRECEIPTID() {
-		return RECEIPTID;
+	
+	public int getReceiptId() {
+		return receiptId;
 	}
-	public void setRECEIPTID(int rECEIPTID) {
-		RECEIPTID = rECEIPTID;
+	public void setReceiptId(int receiptId) {
+		this.receiptId = receiptId;
 	}
-	public int getPRICE() {
-		return PRICE;
+	public int getPrice() {
+		return price;
 	}
-	public void setPRICE(int pRICE) {
-		PRICE = pRICE;
+	public void setPrice(int price) {
+		this.price = price;
 	}
-	public int getGRADEDISCOUNT() {
-		return GRADEDISCOUNT;
+	public int getTotalPrice() {
+		return totalPrice;
 	}
-	public void setGRADEDISCOUNT(int gRADEDISCOUNT) {
-		GRADEDISCOUNT = gRADEDISCOUNT;
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
 	}
-	public int getTOTALPRICE() {
-		return TOTALPRICE;
+	public String getPaymentDate() {
+		return paymentDate;
 	}
-	public void setTOTALPRICE(int tOTALPRICE) {
-		TOTALPRICE = tOTALPRICE;
+	public void setPaymentDate(String paymentDate) {
+		this.paymentDate = paymentDate;
 	}
-	public String getPAYMENTDATE() {
-		return PAYMENTDATE;
+	public int getUseMileage() {
+		return useMileage;
 	}
-	public void setPAYMENTDATE(String pAYMENTDATE) {
-		PAYMENTDATE = pAYMENTDATE;
+	public void setUseMileage(int useMileage) {
+		this.useMileage = useMileage;
 	}
-	public int getUSEMILEAGE() {
-		return USEMILEAGE;
+	public String getUserId() {
+		return userId;
 	}
-	public void setUSEMILEAGE(int uSEMILEAGE) {
-		USEMILEAGE = uSEMILEAGE;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
+	
+
 	
 	
 }

@@ -23,21 +23,5 @@ if (SelectNum != null) {
 	out.println("좌석을 선택해주세요");
 }
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>예약 확인</title>
-</head>
-<body>
-	<p><%=cnt%>개의 예약을 추가 했습니다.
-	</p>
-	<div style="text-align: center; margin-top: 20px;">
-		<input type="button" value="뒤로가기"
-			onclick="window.location='reservationForm.jsp'"> 
-		<input
-			type="button" value="예약확인하기"
-			onclick="window.location='reservationList.jsp'">
-	</div>
-</body>
-</html>
+<meta http-equiv="Refresh"
+	content="0;url=cartList.jsp">

@@ -47,7 +47,7 @@ public class CartDAO {
 		}
 		return value;
 	}
-	
+
 	public static ArrayList<HashMap> selectArticle(String userId) {
 		ArrayList<HashMap> list = new ArrayList<>();
 		String sql = "CALL CARTTBL_SELECT(?,?)";
@@ -61,7 +61,7 @@ public class CartDAO {
 			cstmt.setString(1, userId);
 			cstmt.registerOutParameter(2, Types.REF_CURSOR);
 			cstmt.execute();
-			rs=(ResultSet)cstmt.getObject(2);
+			rs = (ResultSet) cstmt.getObject(2);
 			while (rs.next()) {
 				HashMap<String, String> map = new HashMap<>();
 				map.put("no", rs.getString("no"));
@@ -81,8 +81,8 @@ public class CartDAO {
 		}
 		return list;
 	}
-	
-	public static  HashMap<String, String> selectArticle(String userId,String no ) {
+
+	public static HashMap<String, String> selectArticle(String userId, String no) {
 		HashMap<String, String> map = new HashMap<>();
 		String sql = "CALL CARTTBL_SELECT_NO(?,?,?)";
 		Connection con = null;
@@ -96,9 +96,9 @@ public class CartDAO {
 			cstmt.setInt(2, Integer.parseInt(no));
 			cstmt.registerOutParameter(3, Types.REF_CURSOR);
 			cstmt.execute();
-			rs=(ResultSet)cstmt.getObject(3);
+			rs = (ResultSet) cstmt.getObject(3);
 			while (rs.next()) {
-				
+
 				map.put("no", rs.getString("no"));
 				map.put("performanceId", rs.getString("performanceid"));
 				map.put("genre", rs.getString("genre"));
@@ -108,7 +108,6 @@ public class CartDAO {
 				map.put("dayOfPerformance", rs.getString("dayOfPerformance"));
 				map.put("ticketPrice", rs.getString("ticketprice"));
 
-
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -116,5 +115,29 @@ public class CartDAO {
 			DBPoolUtil2.dbReleaseClose(rs, cstmt, con);
 		}
 		return map;
+	}
+
+	public static int deleteArticle(String[] nos) {
+		ArrayList<HashMap> list = new ArrayList<>();
+		String sql = "CALL CARTTBL_DELETE(?)";
+		Connection con = null;
+		CallableStatement cstmt = null;
+		ResultSet rs = null;
+		int value=-1;
+
+		for (int i = 0; i < nos.length; i++) {
+			try {
+				con = DBPoolUtil2.makeConnection();
+				cstmt = con.prepareCall(sql);
+				cstmt.setString(1, nos[i]);
+				value = cstmt.executeUpdate();
+			
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DBPoolUtil2.dbReleaseClose(rs, cstmt, con);
+			}
+		}
+		return value;
 	}
 }

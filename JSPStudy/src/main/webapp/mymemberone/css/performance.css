@@ -56,7 +56,7 @@ td {
     height: 100%;
 }
 
-tr.adress>td,mileage{
+tr.adress>td,.mileage{
     display: flex;
     flex-direction: column;
 }

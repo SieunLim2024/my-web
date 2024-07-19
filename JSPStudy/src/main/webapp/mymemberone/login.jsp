@@ -23,11 +23,11 @@ if (loginID == null) {
 	<div>
 		<h1>로그인</h1>
 	</div>
-	<div>
+	<!-- <div>
 		<input type="radio" name="member" value="radio1" id="radio1">
 		<label for="radio1"><b>회원</b></label> <input type="radio"
 			name="member" value="radio2" id="radio2"> <label for="radio2"><b>비회원(주문조회)</b></label>
-	</div>
+	</div> -->
 	<div class="menu1">
 		<div class="left1">
 			<input type="text" placeholder="아이디" id="userId" name="userId"
@@ -38,7 +38,7 @@ if (loginID == null) {
 			<input type="submit" value="로그인">
 		</div>
 	</div>
-	<div class="menu2">
+<!-- 	<div class="menu2">
 		<div class="left2">
 			<input type="checkbox" value="1" id="checkbox1"> <label
 				for="checkbox1"><b>아이디저장</b></label>
@@ -51,7 +51,7 @@ if (loginID == null) {
 		<input type="button" value="회원가입" onclick="location.href='member.jsp'">
 		<input type="button" value="아이디 찾기"> <input type="button"
 			value="비밀번호 찾기">
-	</div>
+	</div> -->
 </form>
 <%
 } else if (loginID.equals("admin")) {
